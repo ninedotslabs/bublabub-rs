@@ -1,0 +1,15 @@
+[package]
+name = "bublabub"
+version = "0.1.0"
+authors = ["ahdyt <ahdyt@pm.me>"]
+edition = "2018"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+serenity = { version ="0.10", default-features = false, features = [ "builder", "client", "framework",  "standard_framework", "gateway", "rustls_backend", "http", "utils", "model", "unstable_discord_api"] }
+tokio = { version = "1.0", features = ["full"] }
+dotenv = "0.15"
+serde = { version = "1.0", features = ["derive"] }
+serde_json = "1.0"
+reqwest = { version = "0.11", features = ["json"] }
