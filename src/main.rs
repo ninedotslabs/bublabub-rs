@@ -3,7 +3,7 @@ use reqwest::header::{ACCEPT, USER_AGENT};
 use serde::{Deserialize, Serialize};
 use serenity::{
     async_trait,
-    client::{/* bridge::gateway::GatewayIntents, */ Client, Context, EventHandler},
+    client::{bridge::gateway::GatewayIntents, Client, Context, EventHandler},
     framework::standard::{
         macros::{command, group},
         CommandResult, StandardFramework,
@@ -11,7 +11,7 @@ use serenity::{
     model::{
         channel::Message,
         gateway::Ready,
-        /* interactions::{ApplicationCommand, Interaction, InteractionResponseType}, */
+        interactions::{ApplicationCommand, Interaction, InteractionResponseType},
     },
     utils::MessageBuilder,
 };
@@ -125,7 +125,7 @@ impl EventHandler for Handler {
             }
         }
     }
-    /*  async fn interaction_create(&self, ctx: Context, interaction: Interaction) {
+    async fn interaction_create(&self, ctx: Context, interaction: Interaction) {
         interaction
             .create_interaction_response(&ctx.http, |response| {
                 response
@@ -133,11 +133,11 @@ impl EventHandler for Handler {
                     .interaction_response_data(|message| message.content("Received event!"))
             })
             .await;
-    } */
+    }
 
-    async fn ready(&self, _ctx: Context, ready: Ready) {
+    async fn ready(&self, ctx: Context, ready: Ready) {
         println!("{} is connected!", ready.user.name);
-        /*   let interactions = ApplicationCommand::get_global_application_commands(&ctx.http).await; */
+        let interactions = ApplicationCommand::get_global_application_commands(&ctx.http).await;
     }
 }
 
